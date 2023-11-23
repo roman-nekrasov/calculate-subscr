@@ -1,8 +1,9 @@
-const input = document.getElementById("date");
-const _6month = document.getElementById("_6month");
-const _12month = document.getElementById("_12month");
-const infoElem = document.getElementById("info");
+const dateInput = document.getElementById("date");
+const packagesSelect = document.getElementById("monthSelect");
+const resultWrapper = document.querySelector(".result-wrapper");
+const result = document.querySelector(".result");
 
+const dayMsAmount = 24 * 60 * 60 * 1000;
 const months = [
     { id: 0, days: 31, name: "січня" },
     { id: 1, days: 28, name: "лютого" },
@@ -17,25 +18,40 @@ const months = [
     { id: 10, days: 30, name: "листопада" },
     { id: 11, days: 31, name: "грудня" },
 ];
+let startTimestamp = null;
+let packagesAmount = 1;
 
-input.onchange = (e) => {
-    const dayMsAmount = 24 * 60 * 60 * 1000;
-    const _6monthTS =
-        new Date(e.target.value).getTime() + (28 * 6 - 1) * dayMsAmount;
-    const _12monthTS =
-        new Date(e.target.value).getTime() + (28 * 12 - 1) * dayMsAmount;
-    const date6 = new Date(_6monthTS);
-    const date12 = new Date(_12monthTS);
+const getResultDayTimestamp = (tsStart, packages) =>
+    new Date(tsStart).getTime() + (28 * packages - 1) * dayMsAmount;
 
-    const info = [];
-    [date6, date12].forEach((date) => {
-        info.push(
-            `${date.getDate()} ${
-                months[date.getMonth()].name
-            } ${date.getFullYear()} року`
+const getDateStrByTimestamp = (ts) => {
+    const date = new Date(ts);
+    return `${date.getDate()} ${
+        months[date.getMonth()].name
+    } ${date.getFullYear()} року`;
+};
+
+const renderResult = () => {
+    if (startTimestamp) {
+        const resultDayTimestamp = getResultDayTimestamp(
+            startTimestamp,
+            packagesAmount
         );
-    });
-    infoElem.textContent = "Останній день підписки";
-    _6month.innerHTML = `на 6 пакетів: <span class='bold'>${info[0]}</span>`;
-    _12month.innerHTML = `на 12 пакетів: <span class='bold'>${info[1]}</span>`;
+        result.textContent = getDateStrByTimestamp(resultDayTimestamp);
+        if ((resultWrapper.style.display = "none")) {
+            resultWrapper.style.display = "block";
+        }
+    } else {
+        resultWrapper.style.display = "none";
+    }
+};
+
+dateInput.onchange = (e) => {
+    startTimestamp = new Date(e.target.value).getTime();
+    renderResult();
+};
+
+packagesSelect.onchange = (e) => {
+    packagesAmount = +e.target.value;
+    renderResult();
 };

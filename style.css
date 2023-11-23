@@ -1,17 +1,104 @@
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
 #root {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 30px;
-    align-items: center;
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin: 10px 0;
+}
+
+input {
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.bold {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+#info {
+    color: #333;
+    font-size: 18px;
 }
 
 #_6month,
 #_12month {
-    font-size: 24px;
+    color: #3498db;
+    font-size: 16px;
+    transition: color 0.3s ease;
 }
 
-.bold {
-    font-weight: 700;
+#_6month:hover,
+#_12month:hover {
+    color: #e74c3c;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Застосування анімації до елементів */
+#root {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Додайте стилізацію для custom select */
+.custom-select {
+    position: relative;
+    width: 50%;
+}
+
+.custom-select select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.custom-select::before {
+    content: "\25BC"; /* стрілка вниз */
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Стилі для вибраного місяця */
+#selectedMonth {
+    margin-top: 20px;
+}
+
+#selectedMonthText {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.result-wrapper {
+    display: none;
 }
