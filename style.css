@@ -1,0 +1,17 @@
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+#_6month,
+#_12month {
+    font-size: 24px;
+}
+
+.bold {
+    font-weight: 700;
+}
