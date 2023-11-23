@@ -1,4 +1,4 @@
-#root {
+/* #root {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -14,4 +14,67 @@
 
 .bold {
     font-weight: 700;
+} */
+
+body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+#root {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+p {
+    margin: 10px 0;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+#info {
+    color: #333;
+    font-size: 18px;
+}
+
+#_6month,
+#_12month {
+    color: #3498db;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+#_6month:hover,
+#_12month:hover {
+    color: #e74c3c;
+}
+
+/* Анімації */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Застосування анімації до елементів */
+#root {
+    animation: fadeIn 1s ease-in-out;
 }
