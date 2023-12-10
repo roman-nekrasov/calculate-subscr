@@ -99,14 +99,11 @@ input {
     color: #3498db;
 }
 
+/* table styles */
+
 .result-wrapper {
     display: none;
-}
-
-/* table styles */
-.result-wrapper {
     margin-top: 30px;
-    display: block;
 }
 
 .result-table {
