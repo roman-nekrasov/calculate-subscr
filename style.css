@@ -102,3 +102,42 @@ input {
 .result-wrapper {
     display: none;
 }
+
+/* table styles */
+.result-wrapper {
+    margin-top: 30px;
+    display: block;
+}
+
+.result-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.result-table thead {
+    background-color: #f2f2f2;
+}
+
+.table-row {
+    border-bottom: 1px solid #ddd;
+    height: 30px;
+}
+
+.table-row-head,
+.table-cell {
+    padding: 15px;
+    text-align: left;
+}
+
+.table-row-head {
+    font-weight: bold;
+}
+
+.result-table tbody .table-row:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.result-table tbody .table-row:hover {
+    background-color: #e0e0e0;
+}

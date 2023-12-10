@@ -1,7 +1,7 @@
 const dateInput = document.getElementById("date");
 const packagesSelect = document.getElementById("monthSelect");
 const resultWrapper = document.querySelector(".result-wrapper");
-const result = document.querySelector(".result");
+const resultTableBody = document.querySelector(".result-table-body");
 
 const dayMsAmount = 24 * 60 * 60 * 1000;
 const months = [
@@ -33,11 +33,23 @@ const getDateStrByTimestamp = (ts) => {
 
 const renderResult = () => {
     if (startTimestamp) {
-        const resultDayTimestamp = getResultDayTimestamp(
-            startTimestamp,
-            packagesAmount
-        );
-        result.textContent = getDateStrByTimestamp(resultDayTimestamp);
+        resultTableBody.innerHTML = "";
+        let curr = startTimestamp;
+        for (let i = 0; i < packagesAmount; i++) {
+            const tr = document.createElement("tr");
+            tr.classList.add("table-row");
+            const col1 = i + 1;
+            const col2 = getDateStrByTimestamp(curr);
+            const col3 = getDateStrByTimestamp(curr + dayMsAmount * 27);
+            [col1, col2, col3].forEach((col) => {
+                const td = document.createElement("td");
+                td.classList.add("table-cell");
+                td.textContent = col;
+                tr.appendChild(td);
+            });
+            resultTableBody.appendChild(tr);
+            curr = curr + dayMsAmount * 28;
+        }
         if ((resultWrapper.style.display = "none")) {
             resultWrapper.style.display = "block";
         }
