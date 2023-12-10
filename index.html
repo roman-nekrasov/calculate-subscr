@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
+        <title>Calculate subscription</title>
         <link rel="stylesheet" href="style.css" />
+        <link type="image/png" sizes="96x96" rel="icon" href="./favicon.ico" />
     </head>
     <body>
         <div id="root">
@@ -28,8 +29,16 @@
                 </select>
             </div>
             <div class="result-wrapper" style="margin-top: 30px">
-                <p>Останній день підписки:</p>
-                <p class="result bold"></p>
+                <table class="result-table">
+                    <thead>
+                        <tr class="table-row">
+                            <th class="table-row-head">номер пакету</th>
+                            <th class="table-row-head">початок дії</th>
+                            <th class="table-row-head">останній день</th>
+                        </tr>
+                    </thead>
+                    <tbody class="result-table-body"></tbody>
+                </table>
             </div>
         </div>
         <script src="./script.js"></script>
