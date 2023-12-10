@@ -141,3 +141,7 @@ input {
 .result-table tbody .table-row:hover {
     background-color: #e0e0e0;
 }
+
+.subscription-radio {
+    margin-right: 5px;
+}
