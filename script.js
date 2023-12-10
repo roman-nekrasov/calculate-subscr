@@ -2,6 +2,7 @@ const dateInput = document.getElementById("date");
 const packagesSelect = document.getElementById("monthSelect");
 const resultWrapper = document.querySelector(".result-wrapper");
 const resultTableBody = document.querySelector(".result-table-body");
+const reverseRadioBtns = document.querySelectorAll(".subscription-radio");
 
 const dayMsAmount = 24 * 60 * 60 * 1000;
 const months = [
@@ -20,6 +21,7 @@ const months = [
 ];
 let startTimestamp = null;
 let packagesAmount = 1;
+let reverse = false;
 
 const getResultDayTimestamp = (tsStart, packages) =>
     new Date(tsStart).getTime() + (28 * packages - 1) * dayMsAmount;
@@ -34,7 +36,9 @@ const getDateStrByTimestamp = (ts) => {
 const renderResult = () => {
     if (startTimestamp) {
         resultTableBody.innerHTML = "";
-        let curr = startTimestamp;
+        let curr = reverse
+            ? startTimestamp - (dayMsAmount * 28 * packagesAmount - dayMsAmount)
+            : startTimestamp;
         for (let i = 0; i < packagesAmount; i++) {
             const tr = document.createElement("tr");
             tr.classList.add("table-row");
@@ -67,3 +71,10 @@ packagesSelect.onchange = (e) => {
     packagesAmount = +e.target.value;
     renderResult();
 };
+
+reverseRadioBtns.forEach((input) => {
+    input.onchange = (e) => {
+        reverse = JSON.parse(e.target.value);
+        renderResult();
+    };
+});

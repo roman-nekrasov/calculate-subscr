@@ -9,8 +9,34 @@
     </head>
     <body>
         <div id="root">
-            <p>Введіть дату активації підписки:</p>
-            <input type="date" id="date" />
+            <p>Введіть дату:</p>
+            <input type="date" id="date" class="date-input" />
+            <div class="subscription-container">
+                <p class="date-info">Ця дата - це</p>
+                <div>
+                    <input
+                        type="radio"
+                        name="reverse"
+                        class="subscription-radio"
+                        id="firstDay"
+                        value="false"
+                        checked
+                    /><label for="firstDay" class="subscription-label"
+                        >перший день підписки</label
+                    >
+                </div>
+                <div>
+                    <input
+                        type="radio"
+                        name="reverse"
+                        class="subscription-radio"
+                        id="lastDay"
+                        value="true"
+                    /><label for="lastDay" class="subscription-label"
+                        >останній день підписки (реверс обчислення)</label
+                    >
+                </div>
+            </div>
             <p>Кількість пакетів:</p>
             <div class="custom-select">
                 <select id="monthSelect">

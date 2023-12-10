@@ -18,8 +18,11 @@ p {
     margin: 10px 0;
 }
 
-input {
+.date-input {
     width: 50%;
+}
+
+input {
     padding: 10px;
     margin-bottom: 20px;
     box-sizing: border-box;
